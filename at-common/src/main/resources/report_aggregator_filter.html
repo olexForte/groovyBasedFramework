@@ -1,0 +1,17 @@
+<table class="filters" style="display: none;">
+    <thead>
+    <th class="browser_filter" bgcolor="lightgreen" colspan="3">Browser</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td class="browser_filter" bgcolor="lightgreen" width="100px"><input  type="checkbox" checked="true" id="chrome_filter" onclick="calculate_stats(false)">chrome</input></td>
+        <td class="browser_filter" bgcolor="lightgreen" width="100px"><input type="checkbox"  checked="true" id="ff_filter" onclick="calculate_stats(false)">ff</input>  </td>
+        <td class="browser_filter" bgcolor="lightgreen" width="100px"><input type="checkbox"  checked="true" id="ie_filter" onclick="calculate_stats(false)">ff</input>  </td>
+    </tr>
+    <th bgcolor="lightblue" colspan="4">Filter appliance</th>
+    <tr>
+        <td bgcolor="lightblue" colspan="2"><input  type="checkbox"  id="AND_filter_operation" onclick="uncheck_bool_operation('OR_filter_operation')">AND</input></td>
+        <td bgcolor="lightblue" colspan="2"><input  type="checkbox" checked="true"  id="OR_filter_operation" onclick="uncheck_bool_operation('AND_filter_operation')">OR</input></td>
+    </tr>
+    </tbody>
+</table>

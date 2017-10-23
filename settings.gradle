@@ -1,0 +1,5 @@
+rootProject.name = 'forte-ats'
+include ':at-common'
+include ':at-ui'
+include ':at-api'
+include ':at-mobile'

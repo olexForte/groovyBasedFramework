@@ -1,0 +1,79 @@
+description = 'Forte ATs UI'
+
+ext {
+    gebVersion = '1.1.1'
+    seleniumVersion = '3.5.3'
+}
+
+// get list of drivers to run tests (default Chrome)
+ext {
+    drivers = System.properties['browsers'] ? System.properties['browsers'].tokenize(';') : ["chrome"]
+}
+// get test name to run using 'test.single' parameter
+ext {
+    testsPattern = System.properties['test.single'] ? System.properties['test.single'] +"*":"*"
+}
+//get names of tests to run from 'include.tests' parameter
+ext {
+    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(':') : ["**"]
+}
+
+dependencies {
+    compile project(':at-common')
+    testCompile project(':at-common').sourceSets.test.output
+    compile fileTree(dir: 'lib', include: '*.jar')
+    compile group: 'org.gebish', name: 'geb-core', version: gebVersion
+    compile group: 'org.gebish', name: 'geb-spock', version: gebVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-remote-driver', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-support', version: seleniumVersion
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
+}
+
+// Copying drivers to Resources
+task copyDrivers(type: Copy) {
+    def fromDir = file("${rootDir}/at-ui/src/main/resources")
+    def toDir = file("${projectDir}/src/test/resources")
+    from(fromDir)
+    into(toDir)
+    include '**/*driver*'
+    include '**/*Driver*'
+    outputs.upToDateWhen { false }
+}
+
+// running tests for each driver
+project.drivers.each { driver ->
+    task "${driver}_Test"(type: Test) {
+        dependsOn copyDrivers
+
+        // specify set of tests to run
+        if(project.testsPattern == '*' )
+            project.includeTests.each {
+                include('specs/**/*'+ it +'*')
+            }
+        else
+            include('specs/**/'+project.testsPattern )
+
+        // set all properties for each run
+        systemProperty "browser", driver
+        systemProperty "testEnv", System.properties['testEnv']
+        systemProperty "baseURL", System.properties['baseURL']
+        systemProperty "geb.env", System.properties['geb.env']
+        systemProperty "testCategory", System.properties['testCategory']
+        systemProperty "geb.build.reportsDir", 'reports'
+        ignoreFailures = true
+
+        // specify thread count
+        maxParallelForks = System.properties['thread.count'] ? System.properties['thread.count'].toInteger() : 1
+        forkEvery = 4
+        outputs.upToDateWhen { false }
+        reports {
+            junitXml.destination = file("$buildDir/test-results/$name")
+        }
+    }
+}
+
+test {
+    dependsOn drivers.collect { driver -> tasks["${driver}_Test"] }
+    enabled = false
+}

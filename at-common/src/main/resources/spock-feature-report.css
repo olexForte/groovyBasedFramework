@@ -1,0 +1,205 @@
+body {
+  font-family: Helvetica;
+}
+
+table {
+  margin: 5px;
+}
+
+div.date-test-ran {
+  font-size: small;
+  font-style: italic;
+}
+
+div.execution-start-time {
+    font-size: small;
+    font-style: italic;
+}
+
+table.features-table {
+    width: 800px;
+    border-collapse:collapse;
+}
+
+table.features-table td {
+    padding:0; margin:0;
+}
+table.summary-table {
+  width: 800px;
+  text-align: left;
+  font-weight: bold;
+  font-size: small;
+}
+
+table.summary-table th {
+  background: lightblue;
+  padding: 6px;
+}
+
+table.summary-table td {
+  background: #E0E0E0;
+  padding: 6px;
+}
+
+.expanded-result .feature-description:before {
+    content: "- ";
+}
+
+.expanded-result .block-kind {
+    display: block;
+}
+
+.expanded-result .block-text {
+    display: block;
+}
+
+.expanded-result .block-text {
+    display: block;
+}
+
+.expanded-result .spec-examples {
+    display: block;
+}
+
+.expanded-result .spec-status {
+    display: block;
+}
+
+.expanded-result .problem-description {
+    display: block;
+}
+
+.collapsed-result .feature-description:before {
+    content: "+ ";
+}
+
+.collapsed-result .block-kind {
+    display: none;
+}
+
+.collapsed-result .block-text {
+    display: none;
+}
+
+.collapsed-result .spec-examples {
+    display: none;
+}
+
+.collapsed-result .spec-status {
+    display: none;
+}
+
+.collapsed-result .problem-description {
+    display: none;
+}
+
+.hidden-result{
+    display: none;
+}
+
+.shown-result{
+    display: block;
+}
+
+.feature-description {
+  font-size: large;
+  background: lightblue;
+  padding: 4px;
+}
+
+.feature-description.error {
+  background: #FF8080;
+}
+
+.feature-description.failure {
+  background: #FF8080;
+}
+
+.feature-description.ignored {
+  background: lightgray;
+}
+
+div.problem-description {
+  padding: 10px;
+  background: pink;
+  border-radius: 10px;
+}
+
+div.problem-header {
+  font-weight: bold;
+  color: red;
+}
+
+div.problem-list {
+  
+}
+
+table.ex-table th {
+  background: lightblue;
+  padding: 0px 5px 0px 5px;
+}
+
+table.ex-table td {
+  background: #E0E0E0;
+  padding: 0px 5px 0px 5px;
+}
+
+table td {
+  min-width: 50px;
+}
+
+col.block-kind-col {
+  width: 70px;
+}
+
+span.spec-header {
+  font-weight: bold;
+}
+
+div.spec-text {
+  /*color: green;*/
+}
+
+div.spec-status {
+  font-style: italic;
+}
+
+.ignored {
+  color: gray;
+}
+
+td.ex-result {
+  text-align: center;
+  background: white !important;
+}
+
+.ex-pass {
+  color: darkgreen;
+}
+
+.ex-fail {
+  color: red;
+  font-weight: bold;
+}
+
+div.block-kind {
+  margin: 2px;
+  font-style: italic;
+}
+
+div.block-text {
+
+}
+
+div.footer {
+  text-align: center;
+  font-size: small;
+}
+
+pre {
+    width: 99%;
+    overflow: auto;
+    border: 1px solid #aaa;
+    padding: 0;
+    margin: 0;
+}

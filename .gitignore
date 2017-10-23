@@ -1,0 +1,26 @@
+.idea/
+
+## File-based project format:
+*.iws
+
+# IntelliJ
+/out/
+/classes/
+
+# mpeltonen/sbt-idea plugin
+.idea_modules/
+
+### Gradle template
+.gradle
+**/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+**/log
+**/reports
+
+*.DS_Store

@@ -1,0 +1,69 @@
+body {
+    font-family: Helvetica;
+}
+
+table {
+    margin: 5px;
+}
+
+div.date-test-ran {
+    font-size: small;
+    font-style: italic;
+}
+
+div.execution-start-time {
+    font-size: small;
+    font-style: italic;
+}
+
+table.summary-table {
+    width: 800px;
+    text-align: left;
+    font-weight: bold;
+    font-size: small;
+}
+
+table.summary-table th {
+    background: lightblue;
+    padding: 6px;
+}
+
+table.summary-table td {
+    background: #E0E0E0;
+    padding: 6px;
+}
+
+tr.error td, td.error {
+    background-color: #F89A4F !important;
+}
+
+tr.failure td, td.failure {
+    color: red;
+}
+
+.ignored {
+    color: gray;
+}
+
+div.footer {
+    text-align: center;
+    font-size: small;
+}
+
+.artificial_hide {
+    opacity: 0;
+}
+
+tr.tr_artificial_hide {
+    display:none;
+}
+
+
+div.div_artificial_hide {
+     display:none;
+}
+
+td.last {
+    width: 1px;
+    white-space: nowrap;
+}

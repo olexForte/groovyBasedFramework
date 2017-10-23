@@ -1,0 +1,22 @@
+allprojects {
+    apply plugin: 'maven'
+
+    group = 'com.fortegrp.ats'
+    version = '2.0'
+}
+
+subprojects {
+    apply plugin: 'groovy'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    defaultTasks 'clean', 'test'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+    }
+
+    delete 'reports'
+    delete 'log'
+}

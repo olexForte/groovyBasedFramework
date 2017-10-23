@@ -1,0 +1,38 @@
+description = 'Forte ATs Mobile'
+
+ext {
+    selendroidVersion = '0.17.0'
+}
+
+dependencies {
+    compile project(':at-common')
+    testCompile project(':at-common').sourceSets.test.output
+    compile project(':at-ui')
+    testCompile project(':at-ui').sourceSets.test.output
+    compile fileTree(dir: 'lib', include: '*.jar')
+    compile group: 'io.selendroid', name: 'selendroid-standalone', version: selendroidVersion
+    compile group: 'io.selendroid', name: 'selendroid-client', version: selendroidVersion
+    compile group: 'org.uiautomation', name: 'ios-common', version: '0.6.5'
+    compile group: 'org.uiautomation', name: 'ios-client', version: '0.6.5'
+}
+/*
+project.drivers.each { driver ->
+    task "${driver}_Test"(type: Test) {
+        systemProperty "browser", driver
+        systemProperty "geb.env", System.properties['geb.env']
+        systemProperty "testCategory", System.properties['testCategory']
+        systemProperty "geb.build.reportsDir", 'reports'
+        ignoreFailures = true
+        maxParallelForks = System.properties['thread.count'] ? System.properties['thread.count'].toInteger() : 1
+        forkEvery = 4
+        outputs.upToDateWhen { false }
+        reports {
+            junitXml.destination = file("$buildDir/test-results/$name")
+        }
+    }
+}
+
+test {
+    dependsOn drivers.collect { driver -> tasks["${driver}_Test"] }
+    enabled = false
+} */

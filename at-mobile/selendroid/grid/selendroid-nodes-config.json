@@ -1,0 +1,19 @@
+{
+  "capabilities": [
+    {
+      "automationName": "selendroid",
+      "platformName": "android",
+      "browserName": "selendroid",
+      "maxInstances": 1,
+      "aut": "com.follett.fsc.Enlight"
+    }
+  ],
+  "configuration": {
+    "maxSession": 1,
+    "register": true,
+    "hubHost": "172.16.17.57",
+    "hubPort": 8888,
+    "remoteHost": "http://172.16.17.57:4444",
+    "proxy": "io.selendroid.grid.SelendroidSessionProxy"
+  }
+}
