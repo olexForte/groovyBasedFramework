@@ -38,15 +38,13 @@ at-ui/build.gradle - main file of Gradle configuration (it takes care about gath
 
 ### Installation and execution Instructions
 
-1  Install Java JDK
-http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html
-2  Install Git
-3  Clone git Repository (credentials should be taken from authorised user)
-4  If you using intellij: import project from external model: Gradle; Use gradle wraper task configuration (!!!Dont use default gradle wraper!!!);
-5  Run
- Example: ./gradlew clean :at-ui:test -DbaseURL=https://www.google.com -Dbrowsers=chrome
-
- JVM options for JUnit single test run: -ea -DbaseURL=https://www.google.com -Dbrowser=chrome
+1. Install Java JDK http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html
+2. Install Git
+3. Clone git Repository (credentials should be taken from authorised user)
+4. If you using intellij: import project from external model: Gradle; Use gradle wraper task configuration (!!!Dont use default gradle wraper!!!);
+5. Run
+Example: ./gradlew clean :at-ui:test -DbaseURL=https://www.google.com -Dbrowsers=chrome
+JVM options for JUnit single test run: -ea -DbaseURL=https://www.google.com -Dbrowser=chrome
 
 # Execution parameters
 
