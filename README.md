@@ -43,7 +43,9 @@ at-ui/build.gradle - main file of Gradle configuration (it takes care about gath
 3. Clone git Repository (credentials should be taken from authorised user)
 4. If you using intellij: import project from external model: Gradle; Use gradle wraper task configuration (!!!Dont use default gradle wraper!!!);
 5. Run
+
 Example: ./gradlew clean :at-ui:test -DbaseURL=https://www.google.com -Dbrowsers=chrome
+
 JVM options for JUnit single test run: -ea -DbaseURL=https://www.google.com -Dbrowser=chrome
 
 # Execution parameters
