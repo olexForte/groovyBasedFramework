@@ -15,13 +15,15 @@ class GoogleSearchSpec extends BaseUISpec{
     def "Perform google search '#request'"() {
 
         when: "User at Google main page"
-        at GoogleSearchPage
+        def googlePage = page(GoogleSearchPage)
+
+        at googlePage
 
         and: "Search for '#request'"
-        search(request)
+        googlePage.search(request)
 
         then: "User is redirected to Dashboard Page"
-        searchResultIsDisplayed()
+        googlePage.searchResultIsDisplayed()
 
         where:
         request |_

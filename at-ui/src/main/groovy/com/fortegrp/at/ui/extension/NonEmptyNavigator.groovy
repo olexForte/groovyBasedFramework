@@ -29,26 +29,22 @@ class NonEmptyNavigator extends geb.navigator.NonEmptyNavigator {
         super.leftShift(value)
     }
 
+    @Override
+    String getAttribute(String name) {
+        String result = super.getAttribute(name)
+        logInfo("Get attribute: '" + name + "' from element [" + getElementLocator() + "] = '" + result +"'")
+        result
+    }
+
+    @Override
+    boolean isDisplayed(){
+        logInfo("Check if element is displayed [" + getElementLocator() + "]")
+        super.isDisplayed()
+    }
+
+
     def getElementLocator() {
         def locator = this.contextElements[0].foundBy.toString()
-        locator.substring(locator.indexOf('css selector: ') + 14)
-    }
-
-    boolean isSelected() {
-        firstElement().isSelected()
-    }
-
-    boolean isDisabled() {
-        def value = getAttribute("disabled")
-        // Different drivers return different values here
-        (value == "disabled" || value == "true" || hasClass('disabled'))
-    }
-
-    boolean isMaximized() {
-        getWidth() / browser.driver.manage().window().getSize().getWidth() > 0.95
-    }
-
-    boolean isRequired() {
-        getAttribute("required").equals("true")
+        locator.substring(locator.indexOf('->')+3)
     }
 }
