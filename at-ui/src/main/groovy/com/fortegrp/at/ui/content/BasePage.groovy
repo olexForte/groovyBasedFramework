@@ -30,15 +30,6 @@ class BasePage extends Page {
         return super.verifyAt()
     }
 
-    def back() {
-        driver.navigate().back()
-    }
-
-    protected void switchToLastWindow(timeout=5000) {
-        Thread.sleep(timeout)
-        driver.switchTo().window(driver.getWindowHandles()[driver.getWindowHandles().size() - 1])
-    }
-
     def focusOnElement(WebElement element){
         //sleep(1000)
         driver.executeScript("arguments[0].focus()", element)

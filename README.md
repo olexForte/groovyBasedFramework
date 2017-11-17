@@ -56,8 +56,9 @@ Details:
 -DbaseURL - main URL
 -Dbrowsers - browsers (chrome or firefox)
 
--DincludeTests=** - user may run only several Specs using Spec names separated by ‘:’
-( -Dinclude.tests=*Login*:*ExpiredFunctionality* - will run login and expired functionality tests)
+-Dinclude.tests=Example1.class - will run a single test
+-Dinclude.tests=Example1.class;Example1.class - will run multiple tests
+-Dinclude.tests=*Example*;*AnotherExample* - multiple tests that contain 'Example' or 'AnotherExample' text
 
 -Dthread.count - if you want to save time you may run tests in multiple threads
 (-Dthread.count=4 makes tests run in 4 threads - may affect performance)

@@ -5,11 +5,9 @@ import org.openqa.selenium.Keys
 class GoogleSearchPage extends BasePage {
 
     static at = {
-        waitFor {
             searchField.displayed
-        }
     }
-
+    
     static content = {
         searchField(wait: true) { $("input[name='q']") }
         serchResultStatus(wait: true){$('div#resultStats')}

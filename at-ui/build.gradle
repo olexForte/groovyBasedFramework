@@ -1,8 +1,8 @@
 description = 'Forte ATs UI'
 
 ext {
-    gebVersion = '1.1.1'
-    seleniumVersion = '3.5.3'
+    gebVersion = '2.0'
+    seleniumVersion = '3.7.1'
 }
 
 // get list of drivers to run tests (default Chrome)
@@ -11,11 +11,7 @@ ext {
 }
 // get test name to run using 'test.single' parameter
 ext {
-    testsPattern = System.properties['test.single'] ? System.properties['test.single'] +"*":"*"
-}
-//get names of tests to run from 'include.tests' parameter
-ext {
-    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(':') : ["**"]
+    includeTests = System.properties['include.tests'] ? System.properties['include.tests'].tokenize(';') : ["**"]
 }
 
 dependencies {
@@ -30,29 +26,14 @@ dependencies {
     compile group: 'org.seleniumhq.selenium', name: 'selenium-server', version: seleniumVersion
 }
 
-// Copying drivers to Resources
-task copyDrivers(type: Copy) {
-    def fromDir = file("${rootDir}/at-ui/src/main/resources")
-    def toDir = file("${projectDir}/src/test/resources")
-    from(fromDir)
-    into(toDir)
-    include '**/*driver*'
-    include '**/*Driver*'
-    outputs.upToDateWhen { false }
-}
-
 // running tests for each driver
 project.drivers.each { driver ->
     task "${driver}_Test"(type: Test) {
-        dependsOn copyDrivers
 
         // specify set of tests to run
-        if(project.testsPattern == '*' )
-            project.includeTests.each {
-                include('specs/**/*'+ it +'*')
-            }
-        else
-            include('specs/**/'+project.testsPattern )
+        project.includeTests.each {
+            include('specs/'+ it)
+        }
 
         // set all properties for each run
         systemProperty "browser", driver

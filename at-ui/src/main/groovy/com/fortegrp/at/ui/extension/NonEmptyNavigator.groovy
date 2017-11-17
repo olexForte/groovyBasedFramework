@@ -18,6 +18,13 @@ class NonEmptyNavigator extends geb.navigator.NonEmptyNavigator {
     }
 
     @Override
+    def value() {
+        def result = super.value()
+        logInfo("Get value from element [" + getElementLocator() + "] = '"+ result +"'")
+        result
+    }
+
+    @Override
     Navigator value(value) {
         logInfo("Set value '" + value + "' to element [" + getElementLocator() + "]")
         super.value(value)
@@ -40,6 +47,13 @@ class NonEmptyNavigator extends geb.navigator.NonEmptyNavigator {
     boolean isDisplayed(){
         logInfo("Check if element is displayed [" + getElementLocator() + "]")
         super.isDisplayed()
+    }
+
+    @Override
+    String text() {
+        String result = super.text()
+        logInfo("Get text from element [" + getElementLocator() + "] = '" + result +"'")
+        result
     }
 
 
